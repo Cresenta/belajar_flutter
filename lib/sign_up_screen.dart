@@ -1,3 +1,4 @@
+import 'package:belajar_flutter/login_screen.dart';
 import "package:flutter/material.dart";
 
 class SignUpScreen extends StatefulWidget {
@@ -80,13 +81,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 print("fullName => $fullName");
                 print("email => $email");
                 print("password => $password");
-
-                // Navigator.push(
-                //     context,
-                //     MaterialPageRoute(builder: (context) {
-                //       return HomeScreen();
-                //     })
-                // );
               },
               child: const Text("Sign Up"),
             ),
@@ -113,43 +107,52 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ],
             ),
             SizedBox(height: 16,),
-            ElevatedButton(
+            ElevatedButton.icon(
                 style: ElevatedButton.styleFrom(
                   minimumSize: Size.fromHeight(60),
+                  padding: EdgeInsets.all(0),
                 ),
                 onPressed: () {},
-                child: Text("Sign Up with Facebook")
+                icon: Image.asset("assets/facebook_icon.png", width: 60, height: 60,),
+                label: Row(
+                  children: [
+                    Spacer(),
+                    Text("Sign Up with Facebook"),
+                    Spacer(),
+                  ],
+                )
             ),
             SizedBox(height: 16,),
-            ElevatedButton(
+            ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
                 primary: Colors.white,
                 minimumSize: Size.fromHeight(60),
+                padding: EdgeInsets.all(0),
                 side: BorderSide(width: 1.0, color: Color.fromRGBO(211, 211, 211, 0.5),),
               ),
               onPressed: () {},
-              child: Row(
+              icon: Container(
+                decoration: BoxDecoration(
+                    border: Border.all(width: 1, color: Color.fromRGBO(211, 211, 211, 0.5),)
+                ),
+                child: Image.asset("assets/google_icon.png", width: 60, height: 60,),
+              ),
+              label: Row(
                 children: [
-                  Image.asset("assets/google_icon.png", width: 60, height: 60,),
-                  VerticalDivider(
-                    color: Color.fromRGBO(211, 211, 211, 0.5),
-                  ),
                   Spacer(),
                   Text(
                     "Sign Up with Google",
-                      style: TextStyle(color: Colors.blue),
+                    style: TextStyle(color: Colors.blue),
                   ),
                   Spacer(),
-                ]
+                ],
               ),
-              // child: Text(
-              //   "Sign Up with Google",
-              //   style: TextStyle(color: Colors.blue),
-              // )
             ),
             Spacer(),
             new InkWell(
-              onTap: () {},
+              onTap: () {
+                print("ToS");
+              },
               child: const Text(
                 "By signing up you accept the Terms of Service and Privacy Policy",
                 style: TextStyle(
@@ -159,8 +162,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
             Spacer(),
             new InkWell(
-              onTap: () {
-                print("forget PASSWORD");
+              onTap: () async {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) {
+                      return LoginScreen();
+                    })
+                );
               },
               child: const Text(
                 "Already have an account? Log in",

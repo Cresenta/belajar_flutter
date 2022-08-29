@@ -76,12 +76,17 @@ class _HomeScreenState extends State<HomeScreen> {
                 )
             ),
             SizedBox(height: 48,),
-            const Text(
-              "Skip for now",
-              style: TextStyle(
-                color: Colors.blue,
+            new InkWell(
+              onTap: () {
+                print("skip");
+              },
+              child: const Text(
+                "Skip for now",
+                style: TextStyle(
+                  color: Colors.blue,
+                ),
               ),
-            )
+            ),
           ],
         ),
       ),

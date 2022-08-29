@@ -1,3 +1,4 @@
+import 'package:belajar_flutter/sign_up_screen.dart';
 import "package:flutter/material.dart";
 
 class LoginScreen extends StatefulWidget {
@@ -79,7 +80,9 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             SizedBox(height: 16,),
             new InkWell(
-              onTap: () {},
+              onTap: () {
+                print("forgot password");
+              },
               child: const Text(
                 "Forgot Password?",
                 style: TextStyle(
@@ -110,30 +113,56 @@ class _LoginScreenState extends State<LoginScreen> {
               ],
             ),
             SizedBox(height: 16,),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                minimumSize: Size.fromHeight(60),
-              ),
+            ElevatedButton.icon(
+                style: ElevatedButton.styleFrom(
+                  minimumSize: Size.fromHeight(60),
+                  padding: EdgeInsets.all(0),
+                ),
                 onPressed: () {},
-                child: Text("Log in with Facebook")
+                icon: Image.asset("assets/facebook_icon.png", width: 60, height: 60,),
+                label: Row(
+                  children: [
+                    Spacer(),
+                    Text("Sign Up with Facebook"),
+                    Spacer(),
+                  ],
+                )
             ),
             SizedBox(height: 16,),
-            ElevatedButton(
+            ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
                 primary: Colors.white,
                 minimumSize: Size.fromHeight(60),
+                padding: EdgeInsets.all(0),
                 side: BorderSide(width: 1.0, color: Color.fromRGBO(211, 211, 211, 0.5),),
               ),
               onPressed: () {},
-              child: Text(
-                "Log in with Google",
-                style: TextStyle(color: Colors.blue),
-              )
+              icon: Container(
+                decoration: BoxDecoration(
+                    border: Border.all(width: 1, color: Color.fromRGBO(211, 211, 211, 0.5),)
+                ),
+                child: Image.asset("assets/google_icon.png", width: 60, height: 60,),
+              ),
+              label: Row(
+                children: [
+                  Spacer(),
+                  Text(
+                    "Sign Up with Google",
+                    style: TextStyle(color: Colors.blue),
+                  ),
+                  Spacer(),
+                ],
+              ),
             ),
             Spacer(),
             new InkWell(
-              onTap: () {
-                print("forget PASSWORD");
+              onTap: () async {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) {
+                      return SignUpScreen();
+                    })
+                );
               },
               child: const Text(
                 "Don't have account? Sign Up",
